@@ -210,7 +210,7 @@ int main()
     cout << "Solution:" << endl;
     for (unsigned i = 0; i < solution.n.size(); ++i)
     {
-        if (const bool optionIsNotInKnapsack = !solution.n[i])
+        if (const bool optionIsNotInOrder = !solution.n[i])
             continue;
         cout << "  " << solution.n[i] << ' ' << task.getOptions()[i].name << " ( option cost = " << task.getOptions()[i].c << " )" << endl;
     }
