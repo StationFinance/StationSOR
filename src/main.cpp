@@ -29,6 +29,9 @@ struct OrderTask
 {
     struct Option
     {
+        // each option has the name of platform, the cost of each individual option unit, 
+        // the amount of underlying each unit the option is for, and the total quantity of 
+        // units available for purchase (in units) the platform has based on liquidity.
         std::string name;
         unsigned c, a, qty;
         Option(): c(), a(), qty() {}
