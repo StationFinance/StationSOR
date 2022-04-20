@@ -25,7 +25,7 @@ private:
     unsigned long long begin_;
 };
  
-struct OrderTask
+struct OptionOrder
 {
     struct Option
     {
@@ -48,7 +48,7 @@ struct OrderTask
         Solution(): a(), c(), iterations(), usec() {}
     };
     //...
-    OrderTask(): maxCost_(), totalCost_() {}
+    OptionOrder(): maxCost_(), totalCost_() {}
     void add(const Option& option)
     {
         const unsigned totalOptionCost = option.c * option.qty;
@@ -66,10 +66,10 @@ private:
     Options options_;
 };
  
-class OrderRecursiveSolver
+class OrderRecSolver
 {
 public:
-    typedef OrderTask Task;
+    typedef OptionOrder Task;
     typedef Task::Option Option;
     typedef Task::Options Options;
     typedef Task::Solution Solution;
@@ -187,9 +187,9 @@ private:
     Solution solution_;
 };
  
-void populateDataset(OrderTask& task)
+void populateDataset(OptionOrder& task)
 {
-    typedef OrderTask::Option Option;
+    typedef OptionOrder::Option Option;
     task.setMaxCost( 400 );
     task.add(Option("fnx",9,2,1));
     task.add(Option("actus",13,10,1));
@@ -201,12 +201,12 @@ void populateDataset(OrderTask& task)
  
 int main()
 {
-    OrderTask task;
+    OptionOrder task;
     populateDataset(task);
  
-    OrderRecursiveSolver solver;
+    OrderRecSolver solver;
     solver.solve(task);
-    const OrderTask::Solution& solution = solver.getSolution();
+    const OptionOrder::Solution& solution = solver.getSolution();
  
     cout << "Iterations to solve: " << solution.iterations << endl;
     cout << "Time to solve: " << solution.usec << " usec" << endl;
