@@ -8,10 +8,10 @@
 using std::cout;
 using std::endl;
  
-class StopTimer
+class Timer
 {
 public:
-    StopTimer(): begin_(getUsec()) {}
+    Timer(): begin_(getUsec()) {}
     unsigned long long getTime() const { return getUsec() - begin_; }
 private:
     static unsigned long long getUsec()
@@ -102,7 +102,7 @@ private:
         {
             if(const bool nothingToSolve = !maxCost_ || options_.empty())
                 return;
-            StopTimer timer;
+            Timer timer;
             Candidate candidate;
             solve(candidate, maxCost_, options_.size() - 1);
             convertToSolution(candidate);
